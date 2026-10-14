@@ -1,0 +1,15 @@
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\bin\Debug\net10.0\bj.exe
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\bin\Debug\net10.0\bj.deps.json
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\bin\Debug\net10.0\bj.runtimeconfig.json
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\bin\Debug\net10.0\bj.dll
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\bin\Debug\net10.0\bj.pdb
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.AssemblyInfoInputs.cache
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.AssemblyInfo.cs
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.csproj.CoreCompileInputs.cache
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.sourcelink.json
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.dll
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\refint\bj.dll
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.pdb
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\bj.genruntimeconfig.cache
+C:\Users\blaze\RiderProjects\PJWSTK\experimental\bj\obj\Debug\net10.0\ref\bj.dll
