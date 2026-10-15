@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-
+//tworzenie listy z kartami
 List<string> talia = new List<string>()
 {
     "AC", "AD", "AH", "AS",
@@ -16,6 +16,7 @@ List<string> talia = new List<string>()
     "3C", "3D", "3H", "3S",
     "2C", "2D", "2H", "2S"
 };
+//przypisywanie po 2 karty do ręki krupiera i gracza
 List<string> rekaGracza = new List<string>();
 List<string> rekaKrupiera = new List<string>();
 Random rnd = new Random();
@@ -32,17 +33,16 @@ talia.RemoveAt(liczba);
 liczba = rnd.Next(0, talia.Count);
 rekaKrupiera.Add(talia[liczba]);
 talia.RemoveAt(liczba);
-Console.WriteLine(string.Join(" ", rekaGracza));
 
-//sumowanie ręki
-static int WartoscKarty(string karta)
+//funkcja sumowanie ręki
+static int WartoscKarty(string karta, int aktualnaSuma)
 {
     string figura = karta.Substring(0, karta.Length - 1);
 
     switch (figura)
     {
         case "A":
-            return 11;
+            return aktualnaSuma + 11 > 21 ? 1 : 11;
         case "K":
         case "Q":
         case "J":
@@ -52,26 +52,60 @@ static int WartoscKarty(string karta)
     }
 }
 
-int suma = 0;
-foreach (string karta in rekaGracza)
+static int SumaReki(List<string> reka)
 {
-    suma += WartoscKarty(karta);
+    int suma = 0;
+
+    foreach (string karta in reka)
+    {
+        if (!karta.StartsWith("A"))
+        {
+            suma += WartoscKarty(karta, suma);
+        }
+    }
+
+    foreach (string karta in reka)
+    {
+        if (karta.StartsWith("A"))
+        {
+            suma += WartoscKarty(karta, suma);
+        }
+    }
+
+    return suma;
 }
 
-Console.WriteLine($"Suma pkt: {suma}");
-if (suma == 21)
+//sumowanie i wypisanie ręki gracza
+Console.WriteLine(string.Join(" ", rekaGracza));
+int sumaGracza = SumaReki(rekaGracza);
+Console.WriteLine($"Suma pkt gracza: {sumaGracza}\n");
+
+//sumowanie i wypisanie ręki krupiera
+Console.WriteLine(string.Join(" ", rekaKrupiera));
+int sumaKrupiera = SumaReki(rekaKrupiera);
+Console.WriteLine($"Suma pkt krupiera: {sumaKrupiera}\n");
+
+//jeśli blackjack
+if (sumaGracza == 21)
 {
     Console.WriteLine("BLACK JACK");
     return;
 }
 
-while (suma <= 21)
+//jeśli krupier ma blackjack
+if (sumaKrupiera == 21)
 {
-    Console.WriteLine("Stand/Hit?");
+    return;
+}
+
+//dokonywanie wyboru stand/hit
+while (sumaGracza <= 21)
+{
+    Console.WriteLine("s/h?");
     string wybor = Console.ReadLine()!;
-    if (wybor == "Stand")
+    if (wybor == "s")
     {
-        return;
+        break;
     }
     else
     {
@@ -79,18 +113,61 @@ while (suma <= 21)
         rekaGracza.Add(talia[liczba]);
         talia.RemoveAt(liczba);
         Console.WriteLine(string.Join(" ", rekaGracza));
-        suma = 0;
-        foreach (string karta in rekaGracza)
-        {
-            suma += WartoscKarty(karta);
-        }
+        sumaGracza = SumaReki(rekaGracza);
 
-        Console.WriteLine($"Suma pkt: {suma}");
-        if (suma > 21)
+        Console.WriteLine($"Suma pkt gracza: {sumaGracza}");
+        if (sumaGracza > 21)
         {
             Console.WriteLine("BUSTED");
+            return;
         }
     }
 }
-//Dodać rywalizacje z krupierem
+
+//runda krupiera
+while (sumaKrupiera <= 21)
+{
+    if (sumaKrupiera >= 17)
+    {
+        break;
+    }
+    else
+    {
+        liczba = rnd.Next(0, talia.Count);
+        rekaKrupiera.Add(talia[liczba]);
+        talia.RemoveAt(liczba);
+        Console.WriteLine(string.Join(" ", rekaKrupiera));
+        sumaKrupiera = SumaReki(rekaKrupiera);
+        Console.WriteLine($"Suma pkt krupiera: {sumaKrupiera}");
+        if (sumaKrupiera > 21)
+        {
+            break;
+        }
+    }
+}
+
+//porównywanie wyników
+if (sumaKrupiera > 21)
+{
+    Console.WriteLine("Wygrałeś");
+    return;
+}
+else if (sumaKrupiera > sumaGracza)
+{
+    Console.WriteLine("Przegrałeś");
+    return;
+}
+else if (sumaKrupiera == sumaGracza)
+{
+    Console.WriteLine("Remis");
+    return;
+}
+else
+{
+    Console.WriteLine("Wygrałeś");
+    return;
+}
+
+//zasłonić drugą kartę krupiera
+//dodać opcję double
 //Dodać endless mode
