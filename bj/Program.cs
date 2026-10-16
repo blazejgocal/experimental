@@ -1,20 +1,21 @@
 ﻿using System.Diagnostics;
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 //tworzenie listy z kartami
 List<string> talia = new List<string>()
 {
-    "AC", "AD", "AH", "AS",
-    "KC", "KD", "KH", "KS",
-    "QC", "QD", "QH", "QS",
-    "JC", "JD", "JH", "JS",
-    "10C", "10D", "10H", "10S",
-    "9C", "9D", "9H", "9S",
-    "8C", "8D", "8H", "8S",
-    "7C", "7D", "7H", "7S",
-    "6C", "6D", "6H", "6S",
-    "5C", "5D", "5H", "5S",
-    "4C", "4D", "4H", "4S",
-    "3C", "3D", "3H", "3S",
-    "2C", "2D", "2H", "2S"
+    "A♣", "A♦", "A♥", "A♠",
+    "K♣", "K♦", "K♥", "K♠",
+    "Q♣", "Q♦", "Q♥", "Q♠",
+    "J♣", "J♦", "J♥", "J♠",
+    "10♣", "10♦", "10♥", "10♠",
+    "9♣", "9♦", "9♥", "9♠",
+    "8♣", "8♦", "8♥", "8♠",
+    "7♣", "7♦", "7♥", "7♠",
+    "6♣", "6♦", "6♥", "6♠",
+    "5♣", "5♦", "5♥", "5♠",
+    "4♣", "4♦", "4♥", "4♠",
+    "3♣", "3♦", "3♥", "3♠",
+    "2♣", "2♦", "2♥", "2♠"
 };
 //przypisywanie po 2 karty do ręki krupiera i gracza
 List<string> rekaGracza = new List<string>();
@@ -168,6 +169,7 @@ else
     return;
 }
 
+//dodać kolory wświetlanych kart
 //zasłonić drugą kartę krupiera
 //dodać opcję double
 //Dodać endless mode
